@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 22:09:59 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/01/15 22:14:46 by jikarunw         ###   ########.fr       */
+/*   Created: 2024/01/22 01:10:55 by jikarunw          #+#    #+#             */
+/*   Updated: 2024/01/22 01:12:15 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+# ifndef BONUS_H
+# define BONUS_H
 
-int	ft_is_bigger(long num, t_stack *b)
-{
-	int		i;
+# include "../include/push_swap.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-	if (!b)
-		return (0);
-	while (b->next)
-	{
-		if (num > b->num)
-			b = b->next;
-	}
-}
-
-t_stack	*ft_start_process(t_stack **a, t_stack **b)
-{
-	int		i;
-
-	i = 0;
-
-	push_b(a, b);
-	push_b(a, b);
-	
-	if(ft_is_bigger((*a)->num, *b))
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif

@@ -109,7 +109,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "$(COLOR_RED)Cleaning $(NAME)...$(COLOR_RESET)"
+	@echo "$(COLOR_RED)Cleaning$(COLOR_RESET)$(COLOR_PINK) $(NAME)!$(COLOR_RESET)"
 	@rm -f $(NAME)
 
 re: fclean all

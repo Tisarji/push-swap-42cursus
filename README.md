@@ -83,7 +83,5 @@ Example: ```./push_swap 2 1 3 6 5 8```
 ## Contributing
 Contributions to the Push_Swap project are welcome. Please ensure to follow the project's code style and contribute meaningful and optimized code.
 
-## License
-
 ## Authors
 - Tisarji

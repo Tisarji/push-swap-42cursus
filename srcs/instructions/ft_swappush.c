@@ -6,11 +6,10 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:54:34 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 10:48:24 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:54:43 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
 #include "../../includes/push_swap.h"
 
 int	sa(t_stack **lst_a)

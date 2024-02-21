@@ -6,40 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:11:29 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 11:06:46 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:53:24 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
 #include "../includes/push_swap.h"
-#include <stdlib.h>
-
-static void	emptry_string(int argc, char **argv)
-{
-	int	i;
-	int	count;
-	int	error;
-
-	i = 0;
-	count = 0;
-	error = 0;
-	while (argc > ++i)
-	{
-		if (ft_strlen(argv[i]) == 0)
-			error++;
-		else
-			count++;
-	}
-	if ((error > 0 && count > 0) || (argc >= 2 && error > 0))
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit (EXIT_FAILURE);
-	}
-	else if (error > 0 && count == 0)
-		exit (EXIT_FAILURE);
-	else
-		return ;
-}
 
 void	free_data(t_data **data)
 {
@@ -49,12 +20,12 @@ void	free_data(t_data **data)
 	while ((*data)->split_str && (*data)->split_str[++i])
 	{
 		free((*data)->split_str[i]);
-		(*data)->split_str[i] = 0;
+		(*data)->split_str[i] = NULL;
 	}
 	free((*data)->split_str);
-	(*data)->split_str = 0;
+	(*data)->split_str = NULL;
 	free((*data)->join_str);
-	(*data)->join_str = 0;
+	(*data)->join_str = NULL;
 	free(*data);
 	*data = NULL;
 }
@@ -69,14 +40,14 @@ void	free_lst(t_stack **lst_a, t_stack **lst_b)
 		free(*lst_a);
 		(*lst_a) = tmp;
 	}
-	free(*lst_a);
+	// free(*lst_a);
 	while (*lst_b)
 	{
 		tmp = (*lst_b)->next;
 		free(*lst_b);
 		(*lst_b) = tmp;
 	}
-	free(*lst_b);
+	// free(*lst_b);
 }
 
 void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data)
@@ -89,9 +60,20 @@ void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data)
 	fill_lst(lst_a, data->split_str, &data->len);
 	check_dublicates(lst_a);
 	issorted_detals(lst_a, lst_b, data);
+	int i = -1;
+	while (data->split_str[++i])
+		free(data->split_str[i]);
+	free(data->split_str);
 }
 
-int	main(int argc, char **argv)
+static void	init_handle(int argc, char **argv, t_data *data)
+{
+	data->join_str = NULL;
+	data->split_str = NULL;
+	empty_string(argc, argv);
+}
+
+int	main(int argc, char *argv[])
 {
 	t_data			*data;
 	t_stack			*lst_a;
@@ -100,9 +82,7 @@ int	main(int argc, char **argv)
 	lst_a = NULL;
 	lst_b = NULL;
 	data = malloc(sizeof(t_data));
-	data->join_str = NULL;
-	data->split_str = 0;
-	emptry_string(argc, argv);
+	init_handle(argc, argv, data);
 	if (argc > 1)
 	{
 		data->i = 1;

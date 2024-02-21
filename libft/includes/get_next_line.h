@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:15:08 by jikarunw          #+#    #+#             */
-/*   Updated: 2023/09/26 13:22:08 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/07 02:08:49 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
+# include "./libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *src);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(char *s1, char const *s2);
-size_t	ft_strlen(const char *str);
+char	*get_next_line(int fd);
 
 #endif

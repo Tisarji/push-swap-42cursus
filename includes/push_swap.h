@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 10:47:18 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:07:10 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <string.h>
 
 # include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -44,6 +46,7 @@ typedef struct s_data
 * SECTION - ALGORITHM SORT "BUTTERFLY SORT" *
 *********************************************/
 
+void			alg(t_stack **lst_a, t_stack **lst_b, t_data *data);
 void			butterfly_sort(t_stack **lst_a, t_stack **lst_b, int n);
 void			push_lst_a(t_stack **lst_a, t_stack **lst_b, int len);
 void			sort_lst(t_stack **lst_a, t_stack **lst_b, int len);
@@ -80,6 +83,10 @@ int				check_issorted(t_stack **lst);
 int				check_dublicates(t_stack **head);
 size_t			ft_strlen(const char *str);
 char			**ft_split(char const *s, char c);
+void			empty_string(int argc, char **argv);
+void			free_lst(t_stack **lst_a, t_stack **lst_b);
+void			free_data(t_data **data);
+int				is_empty_or_space(const char *str);
 
 /*********************
 * SECTION OPARATION *

@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 23:23:59 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/04 17:04:42 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:16:16 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i] = '\0';
-	free(s1);
 	return (str);
 }

@@ -59,8 +59,7 @@ STRS_SRC =		strs/ft_atoi.c \
 				strs/ft_tolower.c \
 				strs/ft_toupper.c
 
-GNL_SRC =		ft_gnl/get_next_line.c \
-				ft_gnl/get_next_line_utils.c
+GNL_SRC =		ft_gnl/get_next_line.c
 
 FT_PRINTF_SRC = ft_printf/ft_printf_char.c \
 				ft_printf/ft_printf_hex.c \

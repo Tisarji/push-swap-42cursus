@@ -1,44 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   01_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 10:48:53 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:13:41 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
 #include "../../includes/push_swap.h"
 
 void	ft_msgerror(void)
 {
 	write (2, "Error\n", 6);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void	check_char(char **str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	bool	is_negative;
 
 	i = 0;
 	while (str[i])
 	{
 		j = 0;
+		is_negative = false;
+		if (str[i][0] == '-')
+		{
+			is_negative = true;
+			j++;
+		}
 		while (str[i][j])
 		{
-			if (((str[i][j] >= '0' && str[i][j] <= '9') || \
-			((str[i][j] == '+' || str[i][j] == '-') && \
-			((str[i][j + 1] >= '0' && str[i][j + 1] <= '9') && j == 0))))
-			{
-				j++ ;
-			}
-			else
+			if (!(str[i][j] >= '0' && str[i][j] <= '9'))
 				ft_msgerror();
+			j++;
 		}
+		if (is_negative && j == 1)
+			ft_msgerror();
 		i++;
 	}
 }

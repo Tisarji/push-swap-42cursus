@@ -6,14 +6,13 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 01:00:20 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 10:47:51 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:55:44 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
 #include "../../includes/push_swap.h"
 
-void	butterfly_sort(t_stack **lst_a, t_stack **lst_b, int n)
+void	butterfly_sort(t_stack **lst_a, t_stack **lst_b, int nrange)
 {
 	int	count;
 
@@ -26,15 +25,13 @@ void	butterfly_sort(t_stack **lst_a, t_stack **lst_b, int n)
 			rb(lst_b);
 			count++;
 		}
-		else if ((*lst_a)->idx <= count + n)
+		else if ((*lst_a)->idx <= count + nrange)
 		{
 			pb(lst_a, lst_b);
 			count++;
 		}
 		else
-		{
 			ra(lst_a);
-		}
 	}
 }
 

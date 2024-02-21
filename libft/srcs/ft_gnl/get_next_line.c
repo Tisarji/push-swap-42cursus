@@ -6,11 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:15:06 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/01/17 22:33:12 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:26:36 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/get_next_line.h"
 
 static char	*ft_next_buffer(char **temp)
 {

@@ -6,11 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 23:23:59 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/21 20:16:16 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:19:38 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -37,5 +37,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i] = '\0';
+	free(s1);
 	return (str);
 }

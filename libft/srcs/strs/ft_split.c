@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 01:24:08 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/21 20:15:54 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:25:10 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static size_t	word_count(char const *s, char c)
 
 static char	*putword(const char *s, size_t startIndex, size_t len)
 {
-	char		*word;
-	size_t		i;
+	char	*word;
+	size_t	i;
 
 	i = -1;
 	word = malloc(sizeof(char) * (len + 1));

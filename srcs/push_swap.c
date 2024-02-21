@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:11:29 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/21 20:53:24 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:24:29 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	free_data(t_data **data)
 	while ((*data)->split_str && (*data)->split_str[++i])
 	{
 		free((*data)->split_str[i]);
-		(*data)->split_str[i] = NULL;
+		(*data)->split_str[i] = 0;
 	}
 	free((*data)->split_str);
-	(*data)->split_str = NULL;
+	(*data)->split_str = 0;
 	free((*data)->join_str);
-	(*data)->join_str = NULL;
+	(*data)->join_str = 0;
 	free(*data);
 	*data = NULL;
 }
@@ -40,14 +40,14 @@ void	free_lst(t_stack **lst_a, t_stack **lst_b)
 		free(*lst_a);
 		(*lst_a) = tmp;
 	}
-	// free(*lst_a);
+	free(*lst_a);
 	while (*lst_b)
 	{
 		tmp = (*lst_b)->next;
 		free(*lst_b);
 		(*lst_b) = tmp;
 	}
-	// free(*lst_b);
+	free(*lst_b);
 }
 
 void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data)
@@ -60,16 +60,12 @@ void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data)
 	fill_lst(lst_a, data->split_str, &data->len);
 	check_dublicates(lst_a);
 	issorted_detals(lst_a, lst_b, data);
-	int i = -1;
-	while (data->split_str[++i])
-		free(data->split_str[i]);
-	free(data->split_str);
 }
 
 static void	init_handle(int argc, char **argv, t_data *data)
 {
 	data->join_str = NULL;
-	data->split_str = NULL;
+	data->split_str = 0;
 	empty_string(argc, argv);
 }
 

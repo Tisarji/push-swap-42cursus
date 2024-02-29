@@ -6,19 +6,20 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/21 20:13:41 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:33:34 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_msgerror(void)
+int	ft_msgerror(void)
 {
 	write (2, "Error\n", 6);
 	exit(EXIT_FAILURE);
+	return (1);
 }
 
-void	check_char(char **str)
+int	check_char(char **str)
 {
 	int		i;
 	int		j;
@@ -44,9 +45,10 @@ void	check_char(char **str)
 			ft_msgerror();
 		i++;
 	}
+	return (0);
 }
 
-void	check_valid(char **str)
+int	check_valid(char **str)
 {
 	int	i;
 	int	j;
@@ -64,6 +66,7 @@ void	check_valid(char **str)
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	check_dublicates(t_stack **head)

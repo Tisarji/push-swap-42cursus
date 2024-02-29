@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/07 12:07:10 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/01 03:15:34 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
+
+# define ERROR_NONE 0
+# define ERROR_INVALID_CHARACTER 1
+# define ERROR_INVALID_FORMAT 2
+# define ERROR_DUPLICATE_FOUND 3
 
 typedef struct s_stack
 {
@@ -76,9 +81,9 @@ int				issorted_detals(t_stack **lst_a, \
 	t_stack **lst_b, t_data *data);
 long int		ft_atoi_ps(const char *str);
 unsigned int	ft_lstlen(t_stack *lst);
-void			ft_msgerror(void);
-void			check_char(char **str);
-void			check_valid(char **str);
+int				ft_msgerror(void);
+int				check_char(char **str);
+int				check_valid(char **str);
 int				check_issorted(t_stack **lst);
 int				check_dublicates(t_stack **head);
 size_t			ft_strlen(const char *str);

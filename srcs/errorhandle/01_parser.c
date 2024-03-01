@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/01 02:33:34 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:53:43 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	ft_msgerror(void)
 {
 	write (2, "Error\n", 6);
-	exit(EXIT_FAILURE);
 	return (1);
 }
 

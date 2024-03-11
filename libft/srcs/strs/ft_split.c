@@ -6,75 +6,90 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 01:24:08 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/22 01:37:39 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:10:58 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-static size_t	word_count(char const *s, char c)
+static int		count_words(char const *s, char c)
 {
-	size_t	count;
-	size_t	i;
-	size_t	len;
+	int		i;
+	int		words;
 
-	i = -1;
-	count = 1;
-	len = ft_strlen(s);
-	while (s[++i] && s[i] == c)
-		;
-	while (s[--len] && s[len] == c && i < len)
-		;
-	if (i == ft_strlen(s))
-		return (0);
-	while (s[i] && i < len)
+	words = 0;
+	i = 0;
+	while (s[i])
 	{
-		if (s[i] == c && s[i - 1] != c)
-			count++;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			words++;
 		i++;
 	}
-	return (count);
+	return (words);
 }
 
-static char	*putword(const char *s, size_t startIndex, size_t len)
+static int		words_len(char const *s, char c)
 {
-	char	*word;
-	size_t	i;
+	int		i;
+	int		len;
 
-	i = -1;
-	word = malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
-	while (++i < len)
-		word[i] = s[startIndex + i];
-	word[i] = 0;
-	return (word);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t	start;
-	size_t	end;
-	size_t	i;
-	size_t	wordcount;
-	char	**result;
-
-	start = 0;
-	i = -1;
-	wordcount = word_count(s, c);
-	result = malloc(sizeof(char *) * (wordcount + 1));
-	if (!s || !result)
-		return (NULL);
-	while (++i < wordcount)
+	i = 0;
+	len = 0;
+	while (s[i] != c && s[i] != '\0')
 	{
-		while (s[start] && s[start] == c)
-			start++;
-		end = start;
-		while (s[end] && s[end] != c)
-			end++;
-		result[i] = putword(s, start, end - start);
-		start = end;
+		i++;
+		len++;
 	}
-	result[i] = 0;
-	return (result);
+	return (len);
+}
+
+static void		*leak(char **splitted, int words)
+{
+	int	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(splitted[i]);
+		i++;
+	}
+	free(splitted);
+	return (NULL);
+}
+
+static char		**fill(char const *s, int words, char c, char **splitted)
+{
+	int		i;
+	int		j;
+	int		len;
+
+	i = -1;
+	while (++i < words)
+	{
+		while (*s == c)
+			s++;
+		len = words_len(s, c);
+		if (!(splitted[i] = (char *)malloc(sizeof(char) * (len + 1))))
+			return (leak(splitted, i));
+		j = 0;
+		while (j < len)
+			splitted[i][j++] = *s++;
+		splitted[i][j] = '\0';
+	}
+	splitted[i] = NULL;
+	return (splitted);
+}
+
+char			**ft_split(char	const *s, char c)
+{
+	char	**splitted;
+	int		words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	if (!(splitted = (char **)malloc(sizeof(char *) * (words + 1))))
+		return (NULL);
+	splitted = fill(s, words, c, splitted);
+	return (splitted);
 }

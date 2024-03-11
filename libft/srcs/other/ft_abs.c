@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 23:26:53 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/04 15:59:13 by jikarunw         ###   ########.fr       */
+/*   Created: 2024/03/04 01:06:59 by jikarunw          #+#    #+#             */
+/*   Updated: 2024/03/04 01:07:35 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_abs(int n)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (n < 0)
+		return (-n);
+	return (n);
 }

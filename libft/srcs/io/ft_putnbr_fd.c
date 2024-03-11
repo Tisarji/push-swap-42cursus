@@ -6,19 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 15:40:01 by jikarunw          #+#    #+#             */
-/*   Updated: 2023/09/04 14:50:16 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:15:24 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_abs(int nbr)
-{
-	if (nbr < 0)
-		return (-nbr);
-	else
-		return (nbr);
-}
 
 void	ft_putnbr_fd(int n, int fd)
 {

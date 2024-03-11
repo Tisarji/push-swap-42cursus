@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_hex_to_dec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 23:23:59 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/04 17:04:42 by jikarunw         ###   ########.fr       */
+/*   Created: 2024/03/04 01:17:38 by jikarunw          #+#    #+#             */
+/*   Updated: 2024/03/04 01:17:58 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
-
 #include "../../includes/libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+int	ft_hex_to_dec(const char *hex)
 {
-	int		j;
-	int		i;
-	size_t	len;
-	char	*str;
+	int		len;
+	int		dec;
+	int		base;
+	char	c;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (0);
-	i = 0;
-	while (s1 && s1[i])
+	len = ft_strlen(hex);
+	dec = 0;
+	base = 1;
+	while (len-- > 0)
 	{
-		str[i] = s1[i];
-		i++;
+		c = hex[len];
+		if (c >= '0' && c <= '9')
+			dec += (c - '0') * base;
+		else if (c >= 'a' && c <= 'f')
+			dec += (c - 'a' + 10) * base;
+		else if (c >= 'A' && c <= 'F')
+			dec += (c - 'A' + 10) * base;
+		base *= 16;
 	}
-	j = 0;
-	while (s2 && s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
-	free(s1);
-	return (str);
+	return (dec);
 }

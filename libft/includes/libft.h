@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:07:52 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/21 19:44:56 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:18:54 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdarg.h>
 /* ---------------------!! For the test !!--------------------- */
 # include <stdio.h>
 
@@ -43,6 +44,7 @@ int		ft_isprint(int c);
 int		ft_isalnum(int c);
 int		ft_atoi(const char *str);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*ft_strjoin_for_other(char const *s1, char const *s2);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -72,5 +74,14 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
+/* */
+void	ft_error(char *prompt, int num_args, ...);
+int		ft_free_and_null(void **ptr);
+void	ft_multiple_free(int num_args, ...);
+int		ft_abs(int n);
+char	*ft_freeandjoin(char *buffer, char *aux);
+int		ft_isspace(char c);
+int		ft_count_words(const char *line);
+int		ft_hex_to_dec(const char *hex);
 
 #endif

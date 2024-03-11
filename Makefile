@@ -12,8 +12,7 @@ NAME = push_swap
 RM = rm -rf
 
 # Compiler and Flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -I $(PATH_HEADER)
+CFLAGS = -Wall -Wextra -Werror -I $(PATH_HEADER)
 
 # Paths
 PATH_LIBFT = libft

@@ -6,19 +6,19 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/01 16:53:43 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:53:51 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	ft_msgerror(void)
+void	ft_msgerror(void)
 {
 	write (2, "Error\n", 6);
-	return (1);
+	exit(EXIT_FAILURE);
 }
 
-int	check_char(char **str)
+void	check_char(char **str)
 {
 	int		i;
 	int		j;
@@ -37,35 +37,13 @@ int	check_char(char **str)
 		while (str[i][j])
 		{
 			if (!(str[i][j] >= '0' && str[i][j] <= '9'))
-				ft_msgerror();
+				ft_error("Error : Bad Input exit 0", 1, str);
 			j++;
 		}
 		if (is_negative && j == 1)
-			ft_msgerror();
+			ft_error("Error: Bad Input exit 1", 1, str);
 		i++;
 	}
-	return (0);
-}
-
-int	check_valid(char **str)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if ((str[i][j] == '+' || str[i][j] == '-')
-						&& j != 0)
-				ft_msgerror();
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 int	check_dublicates(t_stack **head)
@@ -80,7 +58,7 @@ int	check_dublicates(t_stack **head)
 		while (ptr)
 		{
 			if (ptr->data == (*head)->data)
-				ft_msgerror();
+				ft_error("Error: Bad Input exit 2", 0);
 			ptr = ptr->next;
 		}
 		ptr = (*head)->next;

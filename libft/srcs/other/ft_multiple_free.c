@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_multiple_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 23:26:53 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/04 15:59:13 by jikarunw         ###   ########.fr       */
+/*   Created: 2024/03/04 01:02:18 by jikarunw          #+#    #+#             */
+/*   Updated: 2024/03/04 01:02:41 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_multiple_free(int num_args, ...)
 {
-	size_t	i;
+	va_list	args;
+	void	*ptr;
+	int		i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	i = -1;
+	va_start(args, num_args);
+	while (++i < num_args)
+	{
+		ptr = va_arg(args, void *);
+		ft_free_and_null((void **)&ptr);
+	}
+	va_end(args);
 }

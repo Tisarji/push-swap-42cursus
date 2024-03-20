@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/11 12:47:25 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:23:20 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ typedef struct s_data
 * SECTION - ALGORITHM SORT "BUTTERFLY SORT" *
 *********************************************/
 
-void			alg(t_stack **lst_a, t_stack **lst_b, t_data *data);
+// void			alg(t_stack **lst_a, t_stack **lst_b, t_data *data);
+void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data, int argc, char *argv[]);
 void			butterfly_sort(t_stack **lst_a, t_stack **lst_b, int n);
 void			push_lst_a(t_stack **lst_a, t_stack **lst_b, int len);
 void			sort_lst(t_stack **lst_a, t_stack **lst_b, int len);
@@ -77,15 +78,25 @@ int				issorted_detals(t_stack **lst_a, \
 long int		ft_atoi_ps(const char *str);
 unsigned int	ft_lstlen(t_stack *lst);
 void			ft_msgerror(void);
-void			check_char(char **str);
+// void			check_char(char **str);
+// int				check_char(char **str);
+void			*check_char(int argc, char *argv[]);
 int				check_issorted(t_stack **lst);
-int				check_dublicates(t_stack **head);
+int				check_dublicates(t_stack *head);
 size_t			ft_strlen(const char *str);
 char			**ft_split(char const *s, char c);
 void			empty_string(int argc, char **argv);
 void			free_lst(t_stack **lst_a, t_stack **lst_b);
 void			free_data(t_data **data);
 int				is_empty_or_space(const char *str);
+
+int				ft_stacksize(t_stack *lst);
+void			exit_without_error(t_stack *stack_a, \
+	t_stack *stack_b, char **arguments, int argc);
+
+void	free_stack(t_stack **lst);
+void	all_checks(t_stack **lst_a, int argc, char *argv[]);
+
 
 /*********************
 * SECTION OPARATION *

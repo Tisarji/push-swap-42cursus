@@ -31,7 +31,8 @@ ALGORITHM_SRC =		alg_small.c		\
 					alg_big.c
 
 ERRORHANDLE_SRC =	01_parser.c		\
-					02_parser.c
+					02_parser.c		\
+					01_free.c
 
 INSTRUCTIONS_SRC =	ft_swappush.c	\
 					ft_rotate.c		\
@@ -71,6 +72,7 @@ clean:
 	@make clean -C $(PATH_LIBFT)
 	@$(RM) $(OBJ_DIR)
 	@echo "$(COLOR_RED)Cleaned up object files$(COLOR_RESET)"
+	@$(RM) .DS_Store
 
 fclean: clean
 	@make fclean -C $(PATH_LIBFT)

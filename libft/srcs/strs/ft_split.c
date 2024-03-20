@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 01:24:08 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/04 16:10:58 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:15:41 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char			**ft_split(char	const *s, char c)
 		return (NULL);
 	words = count_words(s, c);
 	if (!(splitted = (char **)malloc(sizeof(char *) * (words + 1))))
-		return (NULL);
+		return (0);
 	splitted = fill(s, words, c, splitted);
 	return (splitted);
 }

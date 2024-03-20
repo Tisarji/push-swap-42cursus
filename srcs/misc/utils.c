@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:29:55 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/06 23:23:28 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:16:06 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long int	ft_atoi_ps(const char *str)
 		i++;
 	}
 	if (result * sign > 2147483647 || result * sign < -2147483648 || i > 13)
-		ft_msgerror();
+		ft_error("Error : Bad atoi exit 0", result, 1);
 	return (result * sign);
 }
 

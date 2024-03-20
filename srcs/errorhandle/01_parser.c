@@ -6,66 +6,39 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/11 12:53:51 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:19:44 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_msgerror(void)
-{
-	write (2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
-void	check_char(char **str)
+void	*check_char(int argc, char *argv[])
 {
 	int		i;
 	int		j;
 	bool	is_negative;
 
-	i = 0;
-	while (str[i])
+	i = 1;
+	while (i < argc)
 	{
 		j = 0;
 		is_negative = false;
-		if (str[i][0] == '-')
+		if (argv[i][0] == '-')
 		{
 			is_negative = true;
 			j++;
 		}
-		while (str[i][j])
+		while (argv[i][j] != '\0')
 		{
-			if (!(str[i][j] >= '0' && str[i][j] <= '9'))
-				ft_error("Error : Bad Input exit 0", 1, str);
+			if (!(argv[i][j] == '-' && j == 0) && !ft_isdigit(argv[i][j]))
+				return (NULL);
 			j++;
 		}
 		if (is_negative && j == 1)
-			ft_error("Error: Bad Input exit 1", 1, str);
+			return (NULL);
 		i++;
 	}
-}
-
-int	check_dublicates(t_stack **head)
-{
-	t_stack	*tmp;
-	t_stack	*ptr;
-
-	tmp = *head;
-	while (*head)
-	{
-		ptr = (*head)->next;
-		while (ptr)
-		{
-			if (ptr->data == (*head)->data)
-				ft_error("Error: Bad Input exit 2", 0);
-			ptr = ptr->next;
-		}
-		ptr = (*head)->next;
-		*head = ptr;
-	}
-	*head = tmp;
-	return (0);
+	return ((void *)1);
 }
 
 int	check_issorted(t_stack **lst)
@@ -93,4 +66,72 @@ int	check_issorted(t_stack **lst)
 	}
 	*lst = tmp;
 	return (0);
+}
+
+static int	ft_dupcheck(int *sorted, int size)
+{
+	int	temp;
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (sorted[i] > sorted[i + 1])
+		{
+			temp = sorted[i];
+			sorted[i] = sorted[i + 1];
+			sorted[i + 1] = temp;
+			i = 0;
+		}
+		else
+			i++;
+	}
+	i = 0;
+	while (i < size - 1)
+	{
+		if (sorted[i] == sorted[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_stacksize(t_stack *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
+}
+
+int	check_dublicates(t_stack *head)
+{
+	int	size;
+	int	*sorted;
+	int	i;
+
+	i = 0;
+	size = ft_stacksize(head);
+	sorted = (int *)malloc(sizeof(int) * size);
+	if (!sorted)
+		return (0);
+	while (head != NULL)
+	{
+		sorted[i] = head->data;
+		head = head->next;
+		i++;
+	}
+	if (!ft_dupcheck(sorted, size))
+	{
+		free(sorted);
+		ft_error("Error: Duplicate found", 0);
+		return (0);
+	}
+	free(sorted);
+	return (1);
 }

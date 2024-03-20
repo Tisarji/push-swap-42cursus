@@ -6,58 +6,19 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:11:29 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/11 13:55:25 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:45:24 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_data(t_data **data)
-{
-	int		i;
-
-	i = -1;
-	while ((*data)->split_str && (*data)->split_str[++i])
-	{
-		free((*data)->split_str[i]);
-		(*data)->split_str[i] = 0;
-	}
-	free((*data)->split_str);
-	(*data)->split_str = 0;
-	free((*data)->join_str);
-	(*data)->join_str = 0;
-	free(*data);
-	*data = NULL;
-}
-
-void	free_lst(t_stack **lst_a, t_stack **lst_b)
-{
-	t_stack	*tmp;
-
-	while (*lst_a)
-	{
-		tmp = (*lst_a)->next;
-		free(*lst_a);
-		(*lst_a) = tmp;
-	}
-	free(*lst_a);
-	while (*lst_b)
-	{
-		tmp = (*lst_b)->next;
-		free(*lst_b);
-		(*lst_b) = tmp;
-	}
-	free(*lst_b);
-}
-
-void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data)
+void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data, int argc, char *argv[])
 {
 	data->split_str = ft_split(data->join_str, ' ');
 	if (!data->split_str[0])
 		return ;
-	check_char(data->split_str);
 	fill_lst(lst_a, data->split_str, &data->len);
-	check_dublicates(lst_a);
+	all_checks(lst_a, argc, argv);
 	issorted_detals(lst_a, lst_b, data);
 }
 
@@ -87,7 +48,7 @@ int	main(int argc, char *argv[])
 			data->join_str = ft_strjoin(data->join_str, " ");
 			data->i++;
 		}
-		alg(&lst_a, &lst_b, data);
+		alg(&lst_a, &lst_b, data, argc, argv);
 		free_lst(&lst_a, &lst_b);
 	}
 	free_data(&data);

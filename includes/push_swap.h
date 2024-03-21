@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/20 15:23:20 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:55:07 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,90 +28,86 @@
 
 typedef struct s_stack
 {
-	int				data;
-	int				idx;
+	int			nbr;
+	int			idx;
 	struct s_stack	*next;
 }				t_stack;
-
-typedef struct s_data
-{
-	unsigned int	lst_len;
-	int				i;
-	char			*join_str;
-	char			**split_str;
-	int				len;
-}				t_data;
 
 /*********************************************
 * SECTION - ALGORITHM SORT "BUTTERFLY SORT" *
 *********************************************/
 
-// void			alg(t_stack **lst_a, t_stack **lst_b, t_data *data);
-void	alg(t_stack **lst_a, t_stack **lst_b, t_data *data, int argc, char *argv[]);
-void			butterfly_sort(t_stack **lst_a, t_stack **lst_b, int n);
-void			push_lst_a(t_stack **lst_a, t_stack **lst_b, int len);
-void			sort_lst(t_stack **lst_a, t_stack **lst_b, int len);
-void			sort_2(t_stack **lst_a);
-void			sort_3(t_stack **lst_a);
-void			sort_4(t_stack **lst_a, t_stack **lst_b);
-void			sort_5(t_stack **lst_a, t_stack **lst_b);
+void		algorithm_small(t_stack **lst);
+void		algorithm_medium(t_stack **a, t_stack **b);
+void		algorithm_large(t_stack **a, t_stack **b, int x);
+void		butterfly_split(t_stack **a, t_stack **b, int size);
+bool		is_descending_order(t_stack *a);
+void		sort_descending(t_stack **a, t_stack **b);
+void		sort_stack(t_stack **a, t_stack **b);
+
+
+void		*parseargs(char **argv, int argc);
+void		errormsg(void);
 
 /************************************
 * SECTION CREATE STACK FOR SORTING *
 ************************************/
 /******************************
- * SECTION LINKlst FOR STACK *
+ * SECTION LINKLIST FOR STACK *
  ******************************/
 
-void			fill_lst(t_stack **lst, char **num, int *len);
-void			index_1(t_stack **lst);
-t_stack			*append(t_stack **head, int new_data);
-void			index_lst(t_stack **lst, int len);
+void	create_t_stack(t_stack **sahead, char **argv, int argc);
+int		createnewlistfromstr(char **av, int i, int stop, int start);
+t_stack		*createnewlst(int nbr);
+void		createt_stacknodes(t_stack **sahead, t_stack *new, char **av, int ac);
+void		create_t_stack(t_stack **sahead, char **argv, int argc);
+int			createnewlistfromstr(char **av, int i, int stop, int start);
+void		create_fromarg(t_stack **sahead, t_stack *new, char **av, int set);
+void		ft_check_arg(t_stack **a, int argc, char *argv[]);
 
 /*******************
 * SECTION - UTILS *
 *******************/
 
-int				find_max(t_stack **lst);
-int				issorted_detals(t_stack **lst_a, \
-	t_stack **lst_b, t_data *data);
-long int		ft_atoi_ps(const char *str);
-unsigned int	ft_lstlen(t_stack *lst);
-void			ft_msgerror(void);
-// void			check_char(char **str);
-// int				check_char(char **str);
-void			*check_char(int argc, char *argv[]);
-int				check_issorted(t_stack **lst);
-int				check_dublicates(t_stack *head);
-size_t			ft_strlen(const char *str);
-char			**ft_split(char const *s, char c);
-void			empty_string(int argc, char **argv);
-void			free_lst(t_stack **lst_a, t_stack **lst_b);
-void			free_data(t_data **data);
-int				is_empty_or_space(const char *str);
+int			top_next_cmp(t_stack *lst);
+int			mid_bot_cmp(t_stack *lst);
+int			top_bot_cmp(t_stack *lst);
+int			sec_largest(t_stack *lst);
 
-int				ft_stacksize(t_stack *lst);
-void			exit_without_error(t_stack *stack_a, \
-	t_stack *stack_b, char **arguments, int argc);
-
-void	free_stack(t_stack **lst);
-void	all_checks(t_stack **lst_a, int argc, char *argv[]);
+void		freeall(t_stack **sa);
+int			ft_stacksize(t_stack *lst);
+int			ft_check(t_stack *lst);
+int			ft_isbiggest(t_stack *lst);
+int			ft_issmallest(t_stack *lst);
+int			findidxpos(t_stack *ls, int max);
+int			findpos(t_stack *ls, int num);
+int			ft_getindex(int *sorted, int num, int size);
+int			*ft_sortcomplete(t_stack *lst);
+void		move_min_element(t_stack **a, t_stack **b);
+int			ft_findquarter_original(int *array, int size, int i);
+int			ft_sortarray_original(t_stack *lst, int **sorted, int size);
+void		ft_prox_bykey(t_stack **a, t_stack **b, int keynum, int x);
+void		ft_proximity(t_stack **a, t_stack **b);
+void		sort_a(t_stack **a, t_stack **b);
 
 
 /*********************
 * SECTION OPARATION *
 *********************/
 
-int				sa(t_stack **lst);
-int				sb(t_stack **lst);
-int				ss(t_stack **lst_a, t_stack **lst_b);
-int				pa(t_stack **lst_a, t_stack **lst_b);
-int				pb(t_stack **lst_b, t_stack **lst_a);
-int				ra(t_stack **lst_a);
-int				rb(t_stack **lst_b);
-int				rr(t_stack **lst_a, t_stack **lst_b);
-int				rra(t_stack **lst_a);
-int				rrb(t_stack **lst_b);
-int				rrr(t_stack **lst_a, t_stack **lst_b);
+void		ft_sa(t_stack **a);
+void		ft_sb(t_stack **b);
+void		ft_ss(t_stack **a, t_stack **b);
+
+void		ft_ra(t_stack **a);
+void		ft_rb(t_stack **b);
+void		ft_rr(t_stack **a, t_stack **b);
+
+void		ft_rra(t_stack **a);
+void		ft_rrb(t_stack **b);
+void		ft_rrr(t_stack **a, t_stack **b);
+
+void		ft_pa(t_stack **a, t_stack **b);
+void		ft_pb(t_stack **a, t_stack **b);
 
 #endif

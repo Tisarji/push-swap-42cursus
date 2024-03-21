@@ -1,67 +1,85 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   02_others.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:29:55 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/11 22:16:06 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:45:50 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-long int	ft_atoi_ps(const char *str)
+void	freeall(t_stack **sa)
 {
-	int			i;
-	int			sign;
-	long int	result;
+	t_stack	*temp;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '-')
+	while (*sa)
 	{
-		sign *= -1;
-		i++;
+		temp = (*sa)->next;
+		free(*sa);
+		*sa = temp;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i] - 48;
-		i++;
-	}
-	if (result * sign > 2147483647 || result * sign < -2147483648 || i > 13)
-		ft_error("Error : Bad atoi exit 0", result, 1);
-	return (result * sign);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_stacksize(t_stack *lst)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	while (lst)
+	{
 		i++;
+		lst = lst->next;
+	}
 	return (i);
 }
 
-unsigned int	ft_lstlen(t_stack *lst)
+int	ft_check(t_stack *lst)
 {
-	unsigned int	res;
+	if (lst)
+	{
+		while (lst->next)
+		{
+			if (lst->nbr > lst->next->nbr)
+				return (0);
+			lst = lst->next;
+		}
+	}
+	return (1);
+}
 
-	res = 0;
+int	ft_isbiggest(t_stack *lst)
+{
+	int	i;
+
+	if (!lst)
+		return (0);
+	i = lst->nbr;
 	while (lst)
 	{
-		res++;
+		if (lst->nbr > i)
+			i = lst->nbr;
 		lst = lst->next;
 	}
-	return (res);
+	return (i);
 }
+
+int	ft_issmallest(t_stack *lst)
+{
+	int	i;
+
+	if (!lst)
+		return (0);
+	i = lst->nbr;
+	while (lst)
+	{
+		if (lst->nbr < i)
+			i = lst->nbr;
+		lst = lst->next;
+	}
+	return (i);
+}
+

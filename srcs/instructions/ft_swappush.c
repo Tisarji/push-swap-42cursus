@@ -6,82 +6,78 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:54:34 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/02/07 14:54:43 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:57:43 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	sa(t_stack **lst_a)
+void	ft_sa(t_stack **a)
 {
 	t_stack	*tmp;
-	t_stack	*a;
 
-	if (*lst_a)
-	{
-		a = *lst_a;
-		tmp = a->next;
-		a->next = tmp->next;
-		tmp->next = a;
-		a = tmp;
-		*lst_a = a;
-		write(1, "sa\n", 3);
-	}
-	return (0);
+	if (ft_stacksize(*a) < 2)
+		return ;
+	if (!(*a)->next)
+		return ;
+	tmp = *a ;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
+	write(1, "sa\n", 3);
 }
 
-int	sb(t_stack **lst_b)
+void	ft_sb(t_stack **b)
 {
 	t_stack	*tmp;
-	t_stack	*b;
 
-	if (*lst_b)
+	if (ft_stacksize(*b) < 2)
+		return ;
+	if (!(*b)->next)
+		return ;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = (*b)->next;
+	(*b)->next = tmp;
+	write(1, "sb\n", 3);
+}
+
+void	ft_ss(t_stack **a, t_stack **b)
+{
+	if (a && ft_stacksize(*a) > 2)
+		ft_sa(a);
+	if (b && ft_stacksize(*b) > 2)
+		ft_sb(b);
+}
+
+void	ft_pa(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!ft_stacksize(*b))
+		return ;
+	if (b)
 	{
-		b = *lst_b;
-		tmp = b->next;
-		b->next = tmp->next;
-		tmp->next = b;
-		b = tmp;
-		*lst_b = b;
-		write(1, "sb\n", 3);
+		tmp = *b;
+		*b = (*b)->next;
+		tmp->next = *a;
+		*a = tmp;
 	}
-	return (0);
+	write(1, "pa\n", 3);
 }
 
-int	ss(t_stack **lst_a, t_stack **lst_b)
+void	ft_pb(t_stack **a, t_stack **b)
 {
-	sa(lst_a);
-	sb(lst_b);
-	write (1, "ss\n", 3);
-	return (0);
-}
+	t_stack	*tmp;
 
-int	pa(t_stack **lst_a, t_stack **lst_b)
-{
-	t_stack	*b;
-
-	b = *lst_b;
-	if (*lst_b)
-		(*lst_b) = (*lst_b)->next;
-	else
-		return (0);
-	b->next = (*lst_a);
-	(*lst_a) = b;
-	write (1, "pa\n", 3);
-	return (0);
-}
-
-int	pb(t_stack **lst_a, t_stack **lst_b)
-{
-	t_stack	*a;
-
-	a = *lst_a;
-	if (*lst_a)
+	if (!ft_stacksize(*a))
+		return ;
+	if (a)
 	{
-		(*lst_a) = (*lst_a)->next;
-		a->next = (*lst_b);
-		(*lst_b) = a;
-		write (1, "pb\n", 3);
+		tmp = *a;
+		*a = (*a)->next;
+		tmp->next = *b;
+		*b = tmp;
 	}
-	return (0);
+	write(1, "pb\n", 3);
 }

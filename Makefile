@@ -27,20 +27,23 @@ PATH_HEADER = includes
 OBJ_DIR = objs
 
 # Source Files Categories
-ALGORITHM_SRC =		alg_small.c		\
-					alg_big.c
+ALGORITHM_SRC =		01_utils.c		\
+					02_utils.c		\
+					alg_init.c		\
+					alg_large.c		\
+					alg.c			\
+					ft_comp.c
 
-ERRORHANDLE_SRC =	01_parser.c		\
-					02_parser.c		\
-					01_free.c
+ERRORHANDLE_SRC =	01_parser.c
 
 INSTRUCTIONS_SRC =	ft_swappush.c	\
 					ft_rotate.c		\
 					ft_reverse.c
 
-MISC_SRC =			ft_lst.c		\
-					ft_others.c		\
-					utils.c
+MISC_SRC =			01_lst.c		\
+					01_others.c		\
+					02_lst.c		\
+					02_others.c
 
 # Prepending the path
 ALGORITHM_SRCS = $(addprefix $(SRC_PATH)/algorithm/, $(ALGORITHM_SRC))

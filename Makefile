@@ -28,13 +28,15 @@ OBJ_DIR = objs
 
 # Source Files Categories
 ALGORITHM_SRC =		01_utils.c		\
-					02_utils.c		\
 					alg_init.c		\
 					alg_large.c		\
 					alg.c			\
+					01_optimize.c	\
+					02_optimize.c	\
 					ft_comp.c
 
-ERRORHANDLE_SRC =	01_parser.c
+ERRORHANDLE_SRC =	01_parser.c		\
+					02_paser.c
 
 INSTRUCTIONS_SRC =	ft_swappush.c	\
 					ft_rotate.c		\

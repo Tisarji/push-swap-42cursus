@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:38:44 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/21 23:38:06 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:19:08 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ t_stack	*createnewlst(int nbr)
 
 	if (nbr < INT_MIN)
 	{
-		errormsg();
+		ft_msgerror();
 		exit(EXIT_FAILURE);
-	}	
+	}
 	newlist = (t_stack *)malloc(sizeof(t_stack));
 	if (!newlist)
 		newlist = NULL;
@@ -52,36 +52,37 @@ t_stack	*createnewlst(int nbr)
 	return (newlist);
 }
 
-void	createt_stacknodes(t_stack **sahead, t_stack *new, char **av, int ac)
+void	createt_stacknodes(t_stack **head_a, t_stack *new, \
+			char *argv[], int argc)
 {
 	int		i;
 	t_stack	*temp;
 
 	i = 2;
-	while (i < ac)
-	{	
-		if (ft_atoi(av[i]) < INT_MIN)
+	while (i < argc)
+	{
+		if (ft_atoi(argv[i]) < INT_MIN)
 		{
-			errormsg();
+			ft_msgerror();
 			exit(EXIT_FAILURE);
-		}	
-		temp = createnewlst(ft_atoi(av[i++]));
+		}
+		temp = createnewlst(ft_atoi(argv[i++]));
 		if (!temp)
 		{
-			while (*sahead)
+			while (*head_a)
 			{
-				free(*sahead);
-				*sahead = (*sahead)->next;
+				free(*head_a);
+				*head_a = (*head_a)->next;
 			}
 			return ;
 		}
 		new = (new->next = temp);
-		if (i == ac - 1)
+		if (i == argc - 1)
 			new->next = NULL;
 	}
 }
 
-void	create_t_stack(t_stack **sahead, char **argv, int argc)
+void	create_t_stack(t_stack **head_a, char *argv[], int argc)
 {
 	int		i;
 	int		set;
@@ -97,14 +98,14 @@ void	create_t_stack(t_stack **sahead, char **argv, int argc)
 		newlist = createnewlst(ft_atoi(argv[i]));
 		if (!newlist)
 			return ;
-		createt_stacknodes(sahead, newlist, argv, argc);
+		createt_stacknodes(head_a, newlist, argv, argc);
 	}
 	else
 	{
 		newlist = createnewlst(createnewlistfromstr(argv, i, set, 0));
-		create_fromarg(sahead, newlist, argv, set);
+		create_fromarg(head_a, newlist, argv, set);
 	}
-	(*sahead) = newlist;
+	(*head_a) = newlist;
 	temp = &newlist;
 	assign_indexes(temp);
 }

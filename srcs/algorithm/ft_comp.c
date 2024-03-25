@@ -6,11 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 04:33:54 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/21 23:42:54 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:48:40 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	top_next_cmp(t_stack *lst)
 {
@@ -73,14 +73,14 @@ int	sec_largest(t_stack *lst)
 	return (second);
 }
 
-void	sort_a(t_stack **a, t_stack **b)
+void	sort_a(t_stack **head_a, t_stack **head_b)
 {
 	int	size;
 
-	size = ft_stacksize(*a);
-	while (ft_stacksize(*a) != 3)
-		ft_proximity(a, b);
-	algorithm_small(a);
-	while (ft_stacksize(*a) < size)
-		ft_pa(a, b);
+	size = ft_stacksize(*head_a);
+	while (ft_stacksize(*head_a) != 3)
+		ft_proximity(head_a, head_b);
+	algorithm_small(head_a);
+	while (ft_stacksize(*head_a) < size)
+		ft_pa(head_a, head_b);
 }

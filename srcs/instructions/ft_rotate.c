@@ -6,62 +6,62 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:35:00 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/21 23:55:59 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:53:19 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_ra(t_stack **a)
+void	ft_ra(t_stack **head_a)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (ft_stacksize(*a) < 2)
+	if (ft_stacksize(*head_a) < 2)
 		return ;
 	tmp = NULL;
 	tmp2 = NULL;
-	if ((*a)->next)
+	if ((*head_a)->next)
 	{
-		tmp = *a;
-		tmp2 = (*a)->next;
-		while ((*a)->next)
-			*a = (*a)->next;
-		(*a)->next = tmp;
-		*a = (*a)->next;
-		(*a)->next = NULL;
-		*a = tmp2;
+		tmp = *head_a;
+		tmp2 = (*head_a)->next;
+		while ((*head_a)->next)
+			*head_a = (*head_a)->next;
+		(*head_a)->next = tmp;
+		*head_a = (*head_a)->next;
+		(*head_a)->next = NULL;
+		*head_a = tmp2;
 		write(1, "ra\n", 3);
 	}
 }
 
-void	ft_rb(t_stack **b)
+void	ft_rb(t_stack **head_b)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (ft_stacksize(*b) < 2)
+	if (ft_stacksize(*head_b) < 2)
 		return ;
 	tmp = NULL;
 	tmp2 = NULL;
-	if ((*b)->next)
+	if ((*head_b)->next)
 	{
-		tmp = *b;
-		tmp2 = (*b)->next;
-		while ((*b)->next)
-			*b = (*b)->next;
-		(*b)->next = tmp;
-		*b = (*b)->next;
-		(*b)->next = NULL;
-		*b = tmp2;
+		tmp = *head_b;
+		tmp2 = (*head_b)->next;
+		while ((*head_b)->next)
+			*head_b = (*head_b)->next;
+		(*head_b)->next = tmp;
+		*head_b = (*head_b)->next;
+		(*head_b)->next = NULL;
+		*head_b = tmp2;
 		write(1, "rb\n", 3);
 	}
 }
 
-void	ft_rr(t_stack **a, t_stack **b)
+void	ft_rr(t_stack **head_a, t_stack **head_b)
 {
-	if (a && ft_stacksize(*a) > 2)
-		ft_ra(a);
-	if (b && ft_stacksize(*b) > 2)
-		ft_rb(b);
+	if (head_a && ft_stacksize(*head_a) > 2)
+		ft_ra(head_a);
+	if (head_b && ft_stacksize(*head_b) > 2)
+		ft_rb(head_b);
 }

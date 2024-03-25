@@ -6,8 +6,8 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:40:39 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/20 14:41:49 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:21:19 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker.h.h"

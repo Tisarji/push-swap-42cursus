@@ -6,23 +6,11 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:29:55 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/21 23:45:50 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:11:25 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	freeall(t_stack **sa)
-{
-	t_stack	*temp;
-
-	while (*sa)
-	{
-		temp = (*sa)->next;
-		free(*sa);
-		*sa = temp;
-	}
-}
 
 int	ft_stacksize(t_stack *lst)
 {
@@ -82,4 +70,3 @@ int	ft_issmallest(t_stack *lst)
 	}
 	return (i);
 }
-

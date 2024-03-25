@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_init.c                                   :+:      :+:    :+:   */
+/*   alg_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 04:18:33 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/01/20 01:00:43 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:06:54 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	move_min_element(t_stack **a, t_stack **b)
+void	move_min_element(t_stack **head_a, t_stack **head_b)
 {
 	int	min;
 	int	pos;
 	int	prox;
 
-	min = ft_issmallest(*a);
-	pos = findpos(*a, min);
-	prox = (ft_stacksize(*a) / 2);
-	if ((*a)->nbr == min)
+	min = ft_issmallest(*head_a);
+	pos = findpos(*head_a, min);
+	prox = (ft_stacksize(*head_a) / 2);
+	if ((*head_a)->nbr == min)
 	{
-		ft_pb(a, b);
-		min = ft_issmallest(*a);
-		pos = findpos(*a, min);
-		prox = (ft_stacksize(*a) / 2);
+		ft_pb(head_a, head_b);
+		min = ft_issmallest(*head_a);
+		pos = findpos(*head_a, min);
+		prox = (ft_stacksize(*head_a) / 2);
 	}
 	if (prox >= pos)
-		ft_ra(a);
+		ft_ra(head_a);
 	else
-		ft_rra(a);
+		ft_rra(head_a);
 }
 
 void	algorithm_small(t_stack **lst)
@@ -60,11 +60,11 @@ void	algorithm_small(t_stack **lst)
 	}
 }
 
-void	algorithm_medium(t_stack **a, t_stack **b)
+void	algorithm_medium(t_stack **head_a, t_stack **head_b)
 {
-	while (ft_stacksize(*a) > 3)
-		move_min_element(a, b);
-	algorithm_small(a);
-	while (*b)
-		ft_pa(a, b);
+	while (ft_stacksize(*head_a) > 3)
+		move_min_element(head_a, head_b);
+	algorithm_small(head_a);
+	while (*head_b)
+		ft_pa(head_a, head_b);
 }

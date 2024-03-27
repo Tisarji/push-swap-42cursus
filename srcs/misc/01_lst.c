@@ -6,13 +6,13 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:37:58 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 15:19:36 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:54:26 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	retnum(int *start, int stop, int sign, char *argv[])
+static int	return_number(int *start, int stop, int sign, char *argv[])
 {
 	long long	num;
 
@@ -33,7 +33,7 @@ static int	retnum(int *start, int stop, int sign, char *argv[])
 	return (num * sign);
 }
 
-static void	al_vals( t_stack **new, t_stack **head_a, t_stack **temp)
+static void	allocate_values( t_stack **new, t_stack **head_a, t_stack **temp)
 {
 	if (!temp)
 	{
@@ -57,7 +57,7 @@ static int	shift_i(char *argv[], int i)
 	return (i);
 }
 
-int	createnewlistfromstr(char *argv[], int i, int stop, int start)
+int	create_from_str(char *argv[], int i, int stop, int start)
 {
 	unsigned int	num;
 	int				sign;
@@ -85,7 +85,7 @@ int	createnewlistfromstr(char *argv[], int i, int stop, int start)
 	return (num * sign);
 }
 
-void	create_fromarg(t_stack **head_a, t_stack *new, char *argv[], int set)
+void	create_from_arg(t_stack **head_a, t_stack *new, char *argv[], int set)
 {
 	int				start;
 	int				i;
@@ -99,14 +99,14 @@ void	create_fromarg(t_stack **head_a, t_stack *new, char *argv[], int set)
 	{
 		sign = 1;
 		i = shift_i(argv, i);
-		num = retnum(&start, i, sign, argv);
+		num = return_number(&start, i, sign, argv);
 		start++;
 		while (argv[1][start] == 32)
 			start++;
 		if (set != 0)
 		{
-			temp = createnewlst(num * sign);
-			al_vals(&new, head_a, &temp);
+			temp = create_lst(num * sign);
+			allocate_values(&new, head_a, &temp);
 			if (!(argv[1][i]))
 				new->next = NULL;
 		}

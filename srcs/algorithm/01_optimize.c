@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:20:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 15:10:06 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:55:03 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	foundsecond_pos(t_stack ***stack_a, t_stack ***stack_b)
 	return (1);
 }
 
-void	ft_prox_bymax(t_stack **stack_a, t_stack **stack_b, int rbcount)
+void	rearrange_stack_by_max(t_stack **stack_a, \
+			t_stack **stack_b, int rbcount)
 {
 	int	max;
 	int	secondbiggest;

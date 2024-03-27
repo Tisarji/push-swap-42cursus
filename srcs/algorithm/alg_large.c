@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 01:00:20 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 15:07:15 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 10:12:08 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void	algorithm_large(t_stack **head_a, t_stack **head_b, int x)
 	while (x < 7)
 	{
 		keynum = ft_findquarter_original(original, size, x);
-		ft_prox_bykey(head_a, head_b, keynum, x);
+		rearrange_stack_by_key(head_a, head_b, keynum, x);
 		x++;
 	}
 	sort_a(head_a, head_b);
 	if (*head_b)
-		ft_prox_bymax(head_a, head_b, keynum);
+		rearrange_stack_by_max(head_a, head_b, keynum);
 	free(original);
 }

@@ -6,13 +6,13 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:57:56 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 14:20:47 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 10:10:58 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_prox_bykey(t_stack **a, t_stack **b, int keynum, int x)
+void	rearrange_stack_by_key(t_stack **a, t_stack **b, int keynum, int x)
 {
 	int	pos;
 	int	prox;

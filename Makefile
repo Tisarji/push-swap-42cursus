@@ -36,7 +36,7 @@ ALGORITHM_SRC =		01_utils.c		\
 					ft_comp.c
 
 ERRORHANDLE_SRC =	01_parser.c		\
-					02_paser.c
+					02_parser.c
 
 INSTRUCTIONS_SRC =	ft_swappush.c	\
 					ft_rotate.c		\

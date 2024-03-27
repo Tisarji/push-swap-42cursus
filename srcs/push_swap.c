@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:11:29 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 15:23:53 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:23:00 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	ft_check_arg(&stack_a, argc, argv);
 	if (!ft_check(stack_a))
 		sort_stack(&stack_a, &stack_b);
-	freeall(&stack_a);
-	freeall(&stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

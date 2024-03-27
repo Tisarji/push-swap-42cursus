@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:38:44 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 15:19:08 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 12:00:50 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	assign_indexes(t_stack **lst2)
 	free (sortedarray);
 }
 
-t_stack	*createnewlst(int nbr)
+t_stack	*create_lst(int nbr)
 {
 	t_stack	*newlist;
 
@@ -52,7 +52,7 @@ t_stack	*createnewlst(int nbr)
 	return (newlist);
 }
 
-void	createt_stacknodes(t_stack **head_a, t_stack *new, \
+void	createt_stack_nodes(t_stack **head_a, t_stack *new, \
 			char *argv[], int argc)
 {
 	int		i;
@@ -66,7 +66,7 @@ void	createt_stacknodes(t_stack **head_a, t_stack *new, \
 			ft_msgerror();
 			exit(EXIT_FAILURE);
 		}
-		temp = createnewlst(ft_atoi(argv[i++]));
+		temp = create_lst(ft_atoi(argv[i++]));
 		if (!temp)
 		{
 			while (*head_a)
@@ -82,7 +82,7 @@ void	createt_stacknodes(t_stack **head_a, t_stack *new, \
 	}
 }
 
-void	create_t_stack(t_stack **head_a, char *argv[], int argc)
+void	init_stack(t_stack **head_a, char *argv[], int argc)
 {
 	int		i;
 	int		set;
@@ -95,15 +95,15 @@ void	create_t_stack(t_stack **head_a, char *argv[], int argc)
 	set = 0;
 	if (argc > 2)
 	{
-		newlist = createnewlst(ft_atoi(argv[i]));
+		newlist = create_lst(ft_atoi(argv[i]));
 		if (!newlist)
 			return ;
-		createt_stacknodes(head_a, newlist, argv, argc);
+		createt_stack_nodes(head_a, newlist, argv, argc);
 	}
 	else
 	{
-		newlist = createnewlst(createnewlistfromstr(argv, i, set, 0));
-		create_fromarg(head_a, newlist, argv, set);
+		newlist = create_lst(create_from_str(argv, i, set, 0));
+		create_from_arg(head_a, newlist, argv, set);
 	}
 	(*head_a) = newlist;
 	temp = &newlist;

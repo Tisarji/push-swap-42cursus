@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_paser.c                                         :+:      :+:    :+:   */
+/*   02_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:15:13 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 14:15:39 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/26 17:24:59 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ static int	check_dups(t_stack *lst)
 	return (1);
 }
 
-void	ft_check_arg(t_stack **a, int argc, char *argv[])
+void	ft_check_arg(t_stack **head_a, int argc, char *argv[])
 {
-	if (argc == 1 || paser_args(argv, argc) == NULL)
+	if (argc == 1 || parser_args(argv, argc) == NULL)
 		ft_msgerror();
 	else
-		create_t_stack(a, argv, argc);
-	if (*a)
+		init_stack(head_a, argv, argc);
+	if (*head_a)
 	{
-		if (!(check_dups(*a)))
+		if (!(check_dups(*head_a)))
 		{
-			freeall(a);
+			free_stack(head_a);
 			ft_msgerror();
 		}
 	}

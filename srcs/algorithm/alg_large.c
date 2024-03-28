@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 01:00:20 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/26 10:12:08 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:45:43 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_findquarter_original(int *array, int size, int i)
 	return (array[((size / 7) * i)] - 1);
 }
 
-static int	crudesort(int ***sorted, int i)
+static int	sort_step(int ***sorted, int i)
 {
 	int	temp;
 
@@ -48,7 +48,7 @@ int	ft_sortarray_original(t_stack *lst, int **sorted, int size)
 	}
 	i = 0;
 	while (i < size - 1)
-		i = crudesort(&sorted, i);
+		i = sort_step(&sorted, i);
 	return (i);
 }
 

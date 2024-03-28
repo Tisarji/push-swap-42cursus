@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 04:33:54 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/25 14:48:40 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:58:59 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	sort_a(t_stack **head_a, t_stack **head_b)
 
 	size = ft_stacksize(*head_a);
 	while (ft_stacksize(*head_a) != 3)
-		ft_proximity(head_a, head_b);
+		adjust_stack(head_a, head_b);
 	algorithm_small(head_a);
 	while (ft_stacksize(*head_a) < size)
 		ft_pa(head_a, head_b);

@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/27 17:46:20 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:52:43 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,32 @@ void	ft_msgerror(void)
 	exit(EXIT_FAILURE);
 }
 
-static int	is_all_digit(char *str)
+static int	is_all_digit(char **str)
 {
-	int	i;
-	int	digits;
+	int		i;
+	int		j;
+	bool	is_negative;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	digits = 0;
-	while ((str[i] >= '0' && str[i] <= '9') || ft_isspace(str[i]))
+	while (str[i])
 	{
+		j = 0;
+		is_negative = false;
+		if (str[i][0] == '-')
+		{
+			is_negative = true;
+			j++;
+		}
+		while (str[i][j])
+		{
+			if (!(str[i][j] >= '0' && str[i][j] <= '9'))
+				ft_msgerror();
+			j++;
+		}
+		if (is_negative && j == 1)
+			ft_msgerror();
 		i++;
-		digits++;
 	}
-	if (str[i] || digits == 0 || digits > 10)
-		return (0);
 	return (1);
 }
 
@@ -56,7 +66,7 @@ void	*parser_args(char *argv[], int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_all_digit(argv[i]))
+		if (!is_all_digit(&argv[i]))
 			return (NULL);
 		i++;
 	}

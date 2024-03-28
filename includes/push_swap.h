@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/27 17:04:31 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:56:35 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		rearrange_stack_by_max(t_stack **head_a, t_stack **head_b, \
 				int rbcount);
 void		rearrange_stack_by_key(t_stack **head_a, t_stack **head_b, \
 				int keynum, int x);
-void		ft_proximity(t_stack **head_a, t_stack **head_b);
+void		adjust_stack(t_stack **head_a, t_stack **head_b);
 void		sort_a(t_stack **head_a, t_stack **head_b);
 
 /******************************

@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:38:44 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/26 12:00:50 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:26:48 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	createt_stack_nodes(t_stack **head_a, t_stack *new, \
 	i = 2;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) < INT_MIN)
+		if (ft_atoi_ps(argv[i]) < INT_MIN)
 		{
 			ft_msgerror();
 			exit(EXIT_FAILURE);
 		}
-		temp = create_lst(ft_atoi(argv[i++]));
+		temp = create_lst(ft_atoi_ps(argv[i++]));
 		if (!temp)
 		{
 			while (*head_a)
@@ -95,7 +95,7 @@ void	init_stack(t_stack **head_a, char *argv[], int argc)
 	set = 0;
 	if (argc > 2)
 	{
-		newlist = create_lst(ft_atoi(argv[i]));
+		newlist = create_lst(ft_atoi_ps(argv[i]));
 		if (!newlist)
 			return ;
 		createt_stack_nodes(head_a, newlist, argv, argc);

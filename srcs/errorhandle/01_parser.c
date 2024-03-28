@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:10:22 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/28 11:52:43 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:52:41 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static int	is_all_digit(char **str)
 	{
 		j = 0;
 		is_negative = false;
-		if (str[i][0] == '-')
+		if (str[i][0] == '-' || str[i][0] == '+')
 		{
 			is_negative = true;
 			j++;
 		}
 		while (str[i][j])
 		{
-			if (!(str[i][j] >= '0' && str[i][j] <= '9'))
+			if (!(str[i][j] >= '0' && str[i][j] <= '9') && str[i][j] != ' ')
 				ft_msgerror();
 			j++;
 		}

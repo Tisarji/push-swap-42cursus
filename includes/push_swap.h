@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/28 11:56:35 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:55:04 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ void		ft_check_arg(t_stack **head_a, int argc, char *argv[]);
 // bool		is_valid_arg_character(char c);
 // bool		is_valid_arg(const char *arg);
 
+int			check_char(char **str);
+int			check_valid(char **str);
+
 /*******************************
  *   SECTION - INSTRUCTIONS    *
  * PATH: DIR/SRCS/INSTRUCTIONS *
@@ -119,5 +122,6 @@ int			ft_issmallest(t_stack *lst);
 int			findidxpos(t_stack *ls, int max);
 int			findpos(t_stack *ls, int num);
 int			ft_getindex(int *sorted, int num, int size);
+long int	ft_atoi_ps(const char *str);
 
 #endif

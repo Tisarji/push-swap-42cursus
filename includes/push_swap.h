@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:46:04 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/03/28 16:55:04 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:10:54 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,19 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
+typedef struct s_lst
+{
+	int				value;
+	int				idx;
+	struct s_lst	*next;
+	struct s_lst	*prev;
+}			t_lst;
+
 typedef struct s_stack
 {
-	int				nbr;
-	int				idx;
-	struct s_stack	*next;
+	t_lst	*head;
+	t_lst	*tail;
+	int		node;
 }				t_stack;
 
 /*********************************************
@@ -38,90 +46,62 @@ typedef struct s_stack
  *         PATH: DIR/SRCS/ALGORITHM          *
  *********************************************/
 
-void		algorithm_small(t_stack **lst);
-void		algorithm_medium(t_stack **head_a, t_stack **head_b);
-void		algorithm_large(t_stack **head_a, t_stack **head_b, int x);
-void		butterfly_split(t_stack **head_a, t_stack **head_b, int size);
-bool		is_descending_order(t_stack *head_a);
-void		sort_descending(t_stack **head_a, t_stack **head_b);
-void		sort_stack(t_stack **head_a, t_stack **head_b);
-int			reverse_rb(t_stack ***head_a, t_stack ***head_b, \
-				int max, int *rbcount);
-void		if_secondpos(t_stack ***head_a, t_stack ***head_b, int *secondpos);
-int			foundsecond_pos(t_stack ***head_a, t_stack ***head_b);
-int			top_next_cmp(t_stack *lst);
-int			mid_bot_cmp(t_stack *lst);
-int			top_bot_cmp(t_stack *lst);
-int			sec_largest(t_stack *lst);
-int			*ft_sortcomplete(t_stack *lst);
-void		move_min_element(t_stack **head_a, t_stack **head_b);
-int			ft_findquarter_original(int *array, int size, int i);
-int			ft_sortarray_original(t_stack *lst, int **sorted, int size);
-void		rearrange_stack_by_max(t_stack **head_a, t_stack **head_b, \
-				int rbcount);
-void		rearrange_stack_by_key(t_stack **head_a, t_stack **head_b, \
-				int keynum, int x);
-void		adjust_stack(t_stack **head_a, t_stack **head_b);
-void		sort_a(t_stack **head_a, t_stack **head_b);
+void		bubble_sort(int *array, int size);
+int			*copy_into_sorted(int *array, int size);
+bool		is_sorted(int *array, int size);
+int			*get_num(int num_count, char *argv[]);
+
+void		find_max_and_push_b(t_lst *lst, t_stack *stack_a, int size);
+void		find_max_and_push_a(t_lst *lst, t_stack *stack_b, int size);
+void		sort_stack(t_stack *stack_a, t_stack *stack_b);
+void		make_butterfly(t_stack *stack_a, t_stack *stack_b, int nrange);
+void		butterfly_sort(t_stack *stack_a, t_stack *stack_b, int size);
+
+void		double_sort(int *un_order, int *sort);
+void		triple_sort(t_stack *stack_a);
+void		four_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void		five_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void		sorting(int size, t_stack *stack_a, t_stack *stack_b);
 
 /******************************
  *   SECTION - ERROR-HANDLE   *
  * PATH: DIR/SRCS/ERRORHANDLE *
  ******************************/
 
-void		ft_msgerror(void);
-void		free_stack(t_stack **head_a);
-void		*parser_args(char *argv[], int argc);
-void		ft_check_arg(t_stack **head_a, int argc, char *argv[]);
-// bool		is_quote(char c);
-// bool		is_whitespace(char c);
-// bool		is_dash(char c);
-// bool		is_valid_arg_character(char c);
-// bool		is_valid_arg(const char *arg);
+void		ft_free(int *un_order, int *sort, char *msg);
+void		free_2d_array(char **array, int size);
+void		free_and_exit(char **array, int size, char *msg);
+void		free_list_and_exit(t_stack *stack, int *array[], int i);
+void		free_stack_and_array(t_stack *stack_a, t_stack *stack_b, int *array1, int *array2);
 
-int			check_char(char **str);
-int			check_valid(char **str);
+void		check_duplicates(int *un_order, int size);
+void		check_num_02(char *num, char **temp, int *num_count);
+void		check_num_01(char *num, char **temp);
+int			get_num_count(char *argv[]);
+int			parser_args(int argc, char *argv[]);
 
 /*******************************
  *   SECTION - INSTRUCTIONS    *
  * PATH: DIR/SRCS/INSTRUCTIONS *
  *******************************/
 
-void		ft_sa(t_stack **head_a);
-void		ft_sb(t_stack **head_b);
-void		ft_ss(t_stack **head_a, t_stack **head_b);
-
-void		ft_ra(t_stack **head_a);
-void		ft_rb(t_stack **head_b);
-void		ft_rr(t_stack **head_a, t_stack **head_b);
-
-void		ft_rra(t_stack **head_a);
-void		ft_rrb(t_stack **head_b);
-void		ft_rrr(t_stack **head_a, t_stack **head_b);
-
-void		ft_pa(t_stack **head_a, t_stack **head_b);
-void		ft_pb(t_stack **head_a, t_stack **head_b);
+void		swap_stack(t_stack *stack, char *action_msg);
+void		rotate_stack(t_stack *stack, char *action_msg);
+void		reverse_rotate_stack(t_stack *stack, char *action_msg);
+void		push_stack_01(t_stack *form, char *action_msg);
+void		push_stack(t_stack *form, t_stack *to, char *action_msg);
 
 /***********************
  *   SECTION - MISC    *
  * PATH: DIR/SRCS/MISC *
  ***********************/
 
-int			create_from_str(char *argv[], int i, int stop, int start);
-t_stack		*create_lst(int nbr);
-void		createt_stack_nodes(t_stack **head_a, t_stack *new, \
-				char *argv[], int argc);
-void		init_stack(t_stack **head_a, char *argv[], int argc);
-
-void		create_from_arg(t_stack **head_a, t_stack *new, \
-				char *argv[], int set);
-int			ft_stacksize(t_stack *lst);
-int			ft_check(t_stack *lst);
-int			ft_isbiggest(t_stack *lst);
-int			ft_issmallest(t_stack *lst);
-int			findidxpos(t_stack *ls, int max);
-int			findpos(t_stack *ls, int num);
-int			ft_getindex(int *sorted, int num, int size);
-long int	ft_atoi_ps(const char *str);
+void		ft_msgerror(char *msg);
+int			generate_range(int size);
+int			get_size_str(char **str);
+void		init_stack(t_stack *stack_b, int **sort);
+int			find_index(int *array, int value, int size);
+t_lst		*make_lst(t_stack *stack, int *array[], int size, int i);
+void		make_stack_a(t_stack *stack, int *un_order, int *sort, int size);
 
 #endif

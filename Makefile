@@ -1,4 +1,3 @@
-# Colors
 COLOR_RESET = \033[0m
 COLOR_YELLOW = \033[1;33m
 COLOR_CYAN = \033[1;36m
@@ -6,15 +5,12 @@ COLOR_RED = \033[91m
 COLOR_GREEN = \033[92m
 COLOR_PINK = \033[95m
 
-# Project Name
 NAME = push_swap
+CHECKER_NAME = checker
 
 RM = rm -rf
-
-# Compiler and Flags
 CFLAGS = -Wall -Wextra -Werror -I $(PATH_HEADER)
 
-# Paths
 PATH_LIBFT = libft
 PATH_SRCS = srcs
 
@@ -26,40 +22,26 @@ PATH_MISC = srcs/misc
 PATH_HEADER = includes
 OBJ_DIR = objs
 
-# Source Files Categories
-ALGORITHM_SRC =		01_utils.c		\
-					alg_init.c		\
-					alg_large.c		\
-					alg.c			\
-					01_optimize.c	\
-					02_optimize.c	\
-					ft_comp.c
+ALGORITHM_SRC =		01_bubble_sort.c	\
+					01_butterfly.c		\
+					01_sorting.c
 
-ERRORHANDLE_SRC =	01_parser.c		\
-					02_parser.c
+ERRORHANDLE_SRC =	01_parser.c			\
+					01_free.c
 
-INSTRUCTIONS_SRC =	ft_swappush.c	\
-					ft_rotate.c		\
-					ft_reverse.c
+INSTRUCTIONS_SRC =	action_inst.c
 
-MISC_SRC =			01_lst.c		\
-					01_others.c		\
-					02_lst.c		\
-					02_others.c
+MISC_SRC =			01_lst.c			\
+					01_utils.c
 
-# Prepending the path
 ALGORITHM_SRCS = $(addprefix $(SRC_PATH)/algorithm/, $(ALGORITHM_SRC))
 ERRORHANDLE_SRCS = $(addprefix $(SRC_PATH)/errorhandle/, $(ERRORHANDLE_SRC))
 INSTRUCTIONS_SRCS = $(addprefix $(SRC_PATH)/instructions/, $(INSTRUCTIONS_SRC))
 MISC_SRCS = $(addprefix $(SRC_PATH)/misc/, $(MISC_SRC))
 
-# Combining All Sources
 SRCS = $(PATH_SRCS)/push_swap.c $(ALGORITHM_SRCS) $(ERRORHANDLE_SRCS) $(INSTRUCTIONS_SRCS) $(MISC_SRCS)
-
-# Object Files
 OBJS = $(SRCS:$(SRC_PATH)/%.c=$(OBJ_DIR)/%.o)
 
-# Rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -86,4 +68,34 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+PATH_CHECKER = checker/srcs
+
+SRCS_CHECKER =	$(PATH_CHECKER)/00_free_bonus.c		\
+				$(PATH_CHECKER)/01_utils_bonus.c	\
+				$(PATH_CHECKER)/02_action_bonus.c	\
+				$(PATH_CHECKER)/03_action_bonus.c	\
+				$(PATH_CHECKER)/04_lst_bonus.c		\
+				$(PATH_CHECKER)/05_parser_bonus.c	\
+				$(PATH_CHECKER)/06_check_bonus.c	\
+				checker/checker.c
+
+OBJ_DIR_CHECKER = objs_checker
+
+OBJS_CHECKER = $(SRCS_CHECKER:$(PATH_CHECKER)/%.c=$(OBJ_DIR_CHECKER)/%.o)
+
+$(OBJ_DIR_CHECKER)/%.o: $(PATH_CHECKER)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(COLOR_GREEN)Compiled:$(COLOR_RESET) $<"
+
+bonus: $(CHECKER_NAME)
+
+$(CHECKER_NAME): $(OBJS_CHECKER)
+	@make -C $(PATH_LIBFT)
+	@$(CC) $(CFLAGS) -o $(CHECKER_NAME) $(OBJS_CHECKER) -L$(PATH_LIBFT) -lft
+	@echo "[$(COLOR_YELLOW)$(CHECKER_NAME) --> OK$(COLOR_RESET)]\n ${COLOR_GREEN}Success!${COLOR_RESET}"
+	@echo "$(COLOR_PINK)\tUsage: checker$(COLOR_RESET)"
+
+re_bonus: fclean_bonus bonus
+
+.PHONY: all clean fclean re bonus clean_bonus fclean_bonus re_bonus

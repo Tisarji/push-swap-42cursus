@@ -6,7 +6,7 @@
 /*   By: jikarunw <jikarunw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:16:12 by jikarunw          #+#    #+#             */
-/*   Updated: 2024/04/16 20:38:22 by jikarunw         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:05:52 by jikarunw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			get_str_size(char **str);
 void		check_duplicates(int *un_order, int size);
 void		check_num_01(char *num, char **temp);
 void		check_num_02(char *num, char **temp, int *num_count);
-int			check_args(int argc, char *argv[]);
+int			parser_args(int argc, char *argv[]);
 int			get_num_count(char *argv[]);
 
 /******************

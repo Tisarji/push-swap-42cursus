@@ -68,7 +68,7 @@ fclean: clean
 
 re: fclean all
 
-PATH_CHECKER = checker/srcs
+PATH_CHECKER = bonus/srcs
 
 SRCS_CHECKER =	$(PATH_CHECKER)/00_free_bonus.c		\
 				$(PATH_CHECKER)/01_utils_bonus.c	\
@@ -77,7 +77,7 @@ SRCS_CHECKER =	$(PATH_CHECKER)/00_free_bonus.c		\
 				$(PATH_CHECKER)/04_lst_bonus.c		\
 				$(PATH_CHECKER)/05_parser_bonus.c	\
 				$(PATH_CHECKER)/06_check_bonus.c	\
-				checker/checker.c
+				bonus/checker.c
 
 OBJ_DIR_CHECKER = objs_checker
 
@@ -95,6 +95,22 @@ $(CHECKER_NAME): $(OBJS_CHECKER)
 	@$(CC) $(CFLAGS) -o $(CHECKER_NAME) $(OBJS_CHECKER) -L$(PATH_LIBFT) -lft
 	@echo "[$(COLOR_YELLOW)$(CHECKER_NAME) --> OK$(COLOR_RESET)]\n ${COLOR_GREEN}Success!${COLOR_RESET}"
 	@echo "$(COLOR_PINK)\tUsage: checker$(COLOR_RESET)"
+
+$(OBJ_DIR_CHECKER)/%.o: $(PATH_CHECKER)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(COLOR_GREEN)Compiled:$(COLOR_RESET) $<"
+
+clean_bonus:
+	@make clean -C $(PATH_LIBFT)
+	@$(RM) $(OBJ_DIR_CHECKER)
+	@echo "$(COLOR_RED)Cleaned up bonus object files$(COLOR_RESET)"
+	@$(RM) .DS_Store
+
+fclean_bonus: clean_bonus
+	@make fclean -C $(PATH_LIBFT)
+	@$(RM) $(CHECKER_NAME)
+	@echo "$(COLOR_RED)Cleaned up bonus executables$(COLOR_RESET)"
 
 re_bonus: fclean_bonus bonus
 

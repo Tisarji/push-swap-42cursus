@@ -1,6 +1,6 @@
 # Push_Swap
 
-<p align="center"><img width="250" alt="Screenshot 2567-04-17 at 13 39 40" src="https://github.com/Tisarji/push-swap-42cursus/assets/48820052/518ded43-ac9a-4e9a-b474-f6a46c3525a1"></p>
+<img width="1282" alt="Screenshot 2567-04-17 at 16 00 07" src="https://github.com/Tisarji/push-swap-42cursus/assets/48820052/27bfd963-5b67-4acd-b0e6-e3e1c5d104f3">
 
 # 📝 About Project
 

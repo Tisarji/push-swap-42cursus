@@ -133,14 +133,12 @@ To compile the program, enter the following command:
 
 ```
 $ cd path/to/push_swap && make
-
 ```
 
 To compile the checker, enter:
 
 ```
 $ cd path/to/push_swap && make bonus
-
 ```
 
 ### **2. How to run the program**
@@ -149,21 +147,18 @@ Execute the program with a set of numbers separated by a space:
 
 ```
 ./push_swap <Number>
-
 ```
 
 To run the checker on push_swap, use the pipe:
 
 ```
 ARG="<Number>"; ./push_swap $ARG | ./checker $ARG
-
 ```
 
 Use `clean` to delete all object files, `fclean` to remove the executable and all object files, and `re` to recompile the program:
 
 ```
 make clean / make fclean / make re / make bonus / make clean_bonus / make fclean_bonus / make re_bonus
-
 ```
 
 # 🎥 Video
